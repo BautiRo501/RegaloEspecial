@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regalo para el Mejor Amigo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .message {
+            font-size: 2em;
+            color: #333;
+            font-weight: bold; /* Texto en negrita */
+        }
+        .countdown {
+            font-size: 4em;
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="message" class="message">Como sos el mejor amigo que pude tener te dedico este regalo :D</div>
+    <div id="countdown" class="countdown"></div>
+
+    <script>
+        // Función para redirigir al enlace
+        function redirectToLink() {
+            window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=9-ExyRIrHjM8y0WF';
+        }
+
+        // Mostrar el texto inicial
+        setTimeout(function() {
+            // Ocultar el mensaje inicial
+            document.getElementById('message').style.display = 'none';
+            
+            // Mostrar el contador
+            var countdownElement = document.getElementById('countdown');
+            countdownElement.style.display = 'block';
+            
+            // Contador regresivo
+            var countdown = 3;
+            countdownElement.innerHTML = countdown;
+            
+            var interval = setInterval(function() {
+                countdown--;
+                countdownElement.innerHTML = countdown;
+                if (countdown <= 0) {
+                    clearInterval(interval);
+                    // Redirigir al enlace
+                    redirectToLink();
+                }
+            }, 1000);
+        }, 5000);
+    </script>
+</body>
+</html>
