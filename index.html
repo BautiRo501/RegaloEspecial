@@ -3,63 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regalo para el Mejor Amigo</title>
+    <title>Regalo Especial</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f0f0f0;
         }
-        .message {
-            font-size: 2em;
-            color: #333;
-            font-weight: bold; /* Texto en negrita */
+        #message {
+            font-size: 24px;
+            margin-top: 20%;
         }
-        .countdown {
-            font-size: 4em;
+        #countdown {
+            font-size: 48px;
             color: red;
             display: none;
+        }
+        #video {
+            display: none;
+            width: 100%;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <div id="message" class="message">Como sos el mejor amigo que pude tener te dedico este regalo :D</div>
-    <div id="countdown" class="countdown"></div>
+    <div id="message">Como sos el mejor amigo que pude tener te dedico este regalo :D</div>
+    <div id="countdown"></div>
+    <video id="video" controls autoplay>
+        <source src="rickroll.mp4" type="video/mp4">
+        Tu navegador no soporta el formato de video.
+    </video>
 
     <script>
-        // Función para redirigir al enlace
-        function redirectToLink() {
-            window.location.href = 'https://youtu.be/dQw4w9WgXcQ?si=9-ExyRIrHjM8y0WF';
-        }
-
-        // Mostrar el texto inicial
+        // Mostrar el mensaje inicial
         setTimeout(function() {
-            // Ocultar el mensaje inicial
             document.getElementById('message').style.display = 'none';
-            
-            // Mostrar el contador
-            var countdownElement = document.getElementById('countdown');
-            countdownElement.style.display = 'block';
-            
-            // Contador regresivo
+            document.getElementById('countdown').style.display = 'block';
+
+            // Contador regresivo de 3 segundos
             var countdown = 3;
-            countdownElement.innerHTML = countdown;
-            
+            var countdownElement = document.getElementById('countdown');
             var interval = setInterval(function() {
+                countdownElement.textContent = countdown;
                 countdown--;
-                countdownElement.innerHTML = countdown;
-                if (countdown <= 0) {
+                if (countdown < 0) {
                     clearInterval(interval);
-                    // Redirigir al enlace
-                    redirectToLink();
+                    document.getElementById('countdown').style.display = 'none';
+                    document.getElementById('video').style.display = 'block';
                 }
             }, 1000);
-        }, 5000);
+        }, 5000); // Espera 5 segundos antes de iniciar el contador
     </script>
 </body>
 </html>
